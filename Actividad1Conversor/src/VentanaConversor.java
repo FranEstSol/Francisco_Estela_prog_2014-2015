@@ -39,6 +39,7 @@ public class VentanaConversor extends JFrame {
 		CajaDolares.setBounds(10, 94, 115, 20);
 		contentPane.add(CajaDolares);
 		
+		
 		//ETIQUETAS
 		Label1 = new JLabel("Euros");
 		Label1.setBounds(10, 11, 77, 14);
