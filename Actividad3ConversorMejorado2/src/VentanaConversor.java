@@ -26,8 +26,13 @@ public class VentanaConversor extends JFrame {
 	private JTextField CajaResultado;
 	private JLabel Label2;
 	private JButton btnConvertir;
-	private JTextField SystemMsg;{
+	private JTextField SystemMsg;
+	float Valor = 0.8f;
+	
+	public VentanaConversor() {
 		
+		
+
 		//VENTANA
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -75,15 +80,15 @@ public class VentanaConversor extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		
 		//AÑADIMOS LOS ELEMENTOS DEL COMBOBOX MEDIANTE ARRAYS
-				//Creacion de 4 nuevas Strings en "formado" array.
+				//Creacion de 4 nuevas Strings en "formato" array.
 				String monedas []=new String[4];
 				
-				//Definicion de los 4 items
+				//Creacion y definicion de los 4 items
 				monedas[0]="Libras";
 				monedas[1]="Dolares";
 				monedas[2]="Yen";
 				monedas[3]="Pesos";
-				//Creacion de 4 nuevos items dentro de combobox
+				//Adicion de los 4 items dentro de combobox
 				comboBox.addItem(monedas[0]);
 				comboBox.addItem(monedas[1]);
 				comboBox.addItem(monedas[2]);
@@ -97,30 +102,32 @@ public class VentanaConversor extends JFrame {
 				switch((String)comboBox.getSelectedItem())
 				{
 				case"Libras":
+					Valor = 0.8f;
 					SystemMsg.setText("Hemos seleccionado la moneda de UK");
 					CajaResultado.setText("");
 					break;
 				case"Dolares":
+					Valor = 1.24f;
 					SystemMsg.setText("Hemos seleccionado la moneda de EEUU");
 					CajaResultado.setText("");
 					break;
 				case"Yen":
+					Valor = 147.81f;
 					SystemMsg.setText("Hemos seleccionado la moneda de Japon");
 					CajaResultado.setText("");
 					break;
 				case"Pesos":
+					Valor = 18.1f;
 					SystemMsg.setText("Hemos seleccionado la moneda de Mexico");
 					CajaResultado.setText("");
 					break;
 					//NO ES NECESARIO EL DEFAULT
 				}
 			}
-				
 		});
 		comboBox.setBounds(10, 116, 115, 20);
 		contentPane.add(comboBox);
 
-		
 		//BOTON
 		btnConvertir = new JButton("Convertir");
 		btnConvertir.addActionListener(new ActionListener() {
@@ -133,27 +140,6 @@ public class VentanaConversor extends JFrame {
 					euros = Float.parseFloat (CajaEuros.getText());
 				
 					if (euros>=0 && euros<=500){
-						//creamos la variable "Valor" y la inicializamos.
-						float Valor = 0;
-						//CONDICION PARA EL SWITCH -> SELECCION DE ITEM EN COMBOBOX
-						//Cada "case" cambiara el valor de la variable "Valor" por el valor de la moneda seleccionada
-						switch((String)comboBox.getSelectedItem())
-						{
-						case"Libras":
-							 Valor = 0.8f;
-							break;
-						case"Dolares":
-							 Valor = 1.24f;
-							break;
-						case"Yen":
-							Valor = 147.81f;
-							break;
-						case"Pesos":
-							Valor = 18.1f;
-							break;
-						//NO ES NECESARIO EL DEFAULT
-						}
-						
 						CajaResultado.setText(String.valueOf(euros*Valor)); 
 						resultado=Float.parseFloat(CajaResultado.getText()); //SE CAPTURA EL CONTENIDO DE "CajaDolares" Y SE APLICA EN LA VARIABLE "resultado"
 						SystemMsg.setForeground(Color.BLACK);
