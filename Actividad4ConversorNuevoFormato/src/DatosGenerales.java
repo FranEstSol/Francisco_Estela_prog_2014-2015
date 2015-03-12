@@ -17,9 +17,6 @@ public class DatosGenerales {
 	private String textoMonedas[]={moneda_DOL, moneda_EUR, moneda_LIB, moneda_YEN};
 	private float valoresConversionMonedasAEuro []={valor_DOL, valor_EUR, valor_LIB, valor_YEN};
 	
-	public DatosGenerales() {
-		
-	}
 	//Crea una variable publica en formato String (con array) llamada "getMonedas" que coje los valores de "textoMonedas"
 	public String [] getMonedas(){
 		return textoMonedas;

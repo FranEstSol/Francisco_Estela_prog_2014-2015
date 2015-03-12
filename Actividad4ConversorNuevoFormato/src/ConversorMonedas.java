@@ -30,7 +30,7 @@ public class ConversorMonedas extends JFrame
 	//Declaracion e inicializacion variables
 	private float valorMonedaSelecc=0.0f;
 	
-	//Datos de monedas importados desde la clase DatosGenerales
+	//Datos de monedas importados desde la clase DatosGenerales.
 	DatosGenerales d=new DatosGenerales();
 		
 	
