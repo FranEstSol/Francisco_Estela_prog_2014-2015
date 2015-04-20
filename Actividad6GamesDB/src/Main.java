@@ -24,7 +24,6 @@ public class Main
 		else 
 		{
 			System.out.println("Conexion fallida");
-
 		}
 		
 		VistaApp frame = new VistaApp();
