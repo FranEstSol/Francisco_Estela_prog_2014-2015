@@ -50,13 +50,6 @@ public class VistaPrincipal extends JPanel
 		comboBoxUsuario.setBounds(10, 235, 150, 20);
 		add(comboBoxUsuario);
 		//Datos del Combobox
-		usuarios = new UsuariosModel();
-		System.out.println(usuarios);
-		Iterator<String> it = usuarios.UserData().iterator();
-		while (it.hasNext())
-		{
-			comboBoxUsuario.addItem((String)it.next());
-		}
 		
 		//Password Field
 		passwordField = new JPasswordField();

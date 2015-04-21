@@ -12,6 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+import modelo.ConexionDB;
 import modelo.UsuariosModel;
 
 public class VistaPrincipal extends JPanel 
@@ -21,7 +22,7 @@ public class VistaPrincipal extends JPanel
 	private JPasswordField passwordField;
 	private JButton btnLogin, btnRegistrarse, btnJuegos, btnPerfil;
 	
-	UsuariosModel usuarios;
+	//UsuariosModel usuarios;
 	
 	public VistaPrincipal() 
 	{
@@ -50,14 +51,14 @@ public class VistaPrincipal extends JPanel
 		comboBoxUsuario.setBounds(10, 235, 150, 20);
 		add(comboBoxUsuario);
 		//Datos del Combobox
-		usuarios = new UsuariosModel();
+	/*	usuarios = new UsuariosModel();
 		System.out.println(usuarios);
 		Iterator<String> it = usuarios.UserData().iterator();
 		while (it.hasNext())
 		{
 			comboBoxUsuario.addItem((String)it.next());
-		}
-		
+		}*/
+
 		//Password Field
 		passwordField = new JPasswordField();
 		passwordField.setBounds(10, 291, 150, 20);

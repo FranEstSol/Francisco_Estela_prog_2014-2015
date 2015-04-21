@@ -47,6 +47,7 @@ public class UsuariosModel
 			while(resultados.next())
 			{	
 				usuarios.add(resultados.getString(GETUSUARIO));	
+				
 			}
 		} 
 		catch (SQLException exceptionSQL) 
@@ -68,9 +69,8 @@ public class UsuariosModel
 				exceptionSQL.printStackTrace();
 			}
 		}	
-		System.out.println("Los usuarios devueltos desde la clase UsuariosModel son: "+usuarios);
-		return usuarios;
-		
+		System.out.println("Los usuarios devueltos desde la clase UsuariosModel son: " +usuarios);
+		return usuarios;		
 	}
 	
 }
