@@ -22,7 +22,6 @@ public class VistaPrincipal extends JPanel
 	private JPasswordField passwordField;
 	private JButton btnLogin, btnRegistrarse, btnJuegos, btnPerfil;
 	
-	//UsuariosModel usuarios;
 	
 	public VistaPrincipal() 
 	{
@@ -30,8 +29,7 @@ public class VistaPrincipal extends JPanel
 		setLayout (null);
 		this.setBounds(0,0, 431, 495);
 		Border border = LineBorder.createGrayLineBorder();
-				
-				
+								
 		//Etiquetas
 		avatar = new JLabel("");
 		avatar.setIcon(new ImageIcon(VistaPrincipal.class.getResource("/images/avatar.png")));
@@ -51,14 +49,19 @@ public class VistaPrincipal extends JPanel
 		comboBoxUsuario.setBounds(10, 235, 150, 20);
 		add(comboBoxUsuario);
 		//Datos del Combobox
-	/*	usuarios = new UsuariosModel();
-		System.out.println(usuarios);
+
+		ConexionDB gameDB; 
+		UsuariosModel usuarios;
+		//Objeto generado e informacion preparada para "enviar" a la clase ConexionDB
+		gameDB = new ConexionDB("localhost", "games", "root", "");				
+		usuarios = new UsuariosModel (gameDB.getConexion());
 		Iterator<String> it = usuarios.UserData().iterator();
 		while (it.hasNext())
 		{
+			System.out.println("AÑADIDO EL USUARIO AL COMBOBOX ");
 			comboBoxUsuario.addItem((String)it.next());
-		}*/
-
+		}				
+		
 		//Password Field
 		passwordField = new JPasswordField();
 		passwordField.setBounds(10, 291, 150, 20);

@@ -26,6 +26,7 @@ public class ConexionDB
 		this.bbdd=BBDD;
 		this.user=USER;
 		this.pass= PASS;
+		//Montamos el principio el host y la base de datos en una sola variable llamada url
 		this.url="jdbc:mysql://" + this.host + "/" + this.bbdd;
 	}
 
@@ -35,6 +36,7 @@ public class ConexionDB
 		{
 			//Carga del controlador SQL
 			Class.forName(CONTROLADOR_SQL);
+			//aplicamos la informacion de arriba
 			conexion = DriverManager.getConnection(this.url,this.user,this.pass);
 		}
 		catch (SQLException exceptionSQL)
@@ -52,6 +54,7 @@ public class ConexionDB
 		return true;
 	}
 	
+	//metodo getConexion que devuelve conexion
 	public static Connection getConexion()
 	{
 		return conexion;

@@ -8,15 +8,6 @@ import java.util.ArrayList;
 
 public class UsuariosModel 
 {
-	//Devolucion de usuarios
-	private static String IDcol = "ID";
-	private static String NOMBREcol = "Usuario";
-	private static String PASScol = "Password";
-	private static String JUEGOcol = "Juego";
-	
-	//Creacion de la array para organizar los datos
-	private static String COLUMNAS[]={IDcol,NOMBREcol,PASScol,JUEGOcol};
-	
 	//Consultas SQL preparadas
 	private final static String GETALL= "SELECT * FROM userdata";
 	private final static String GETUSUARIO ="Usuario";
@@ -28,26 +19,24 @@ public class UsuariosModel
 	
 	public ArrayList<String> usuarios = null;
 	
-	
-	public UsuariosModel(Connection conexion) 
+	public UsuariosModel(Connection conexion2) 
 	{
-		this.conexion=conexion;
+		this.conexion=conexion2;
 		usuarios = new ArrayList<String>();
 	}
 
-
-	public ArrayList UserData()
+	public ArrayList<String> UserData()
 	{
 		try 
 		{
+			//Se crea el statement respecto a la conexion y se combierte en una instruccion
 			instruccion = this.conexion.createStatement();
+			//la instruccion ejecuta un Query que esta definido arriba (en este caso, GETALL)
 			resultados = instruccion.executeQuery(GETALL);
-			//Ciclo que obtiene e imprime la informacion
-			
+			//Ciclo while que añade cada resultado de resultados en la Array "usuarios"
 			while(resultados.next())
 			{	
-				usuarios.add(resultados.getString(GETUSUARIO));	
-				
+				usuarios.add(resultados.getString(GETUSUARIO));
 			}
 		} 
 		catch (SQLException exceptionSQL) 
@@ -55,22 +44,9 @@ public class UsuariosModel
 			System.out.println("Error en Statement");
 			exceptionSQL.printStackTrace();
 		}
-		finally
-		{
-			try
-			{
-				resultados.close();
-				instruccion.close();
-				conexion.close();
-			}
-			catch (SQLException exceptionSQL) 
-			{
-				System.out.println("Error al cerrar");
-				exceptionSQL.printStackTrace();
-			}
-		}	
-		System.out.println("Los usuarios devueltos desde la clase UsuariosModel son: " +usuarios);
-		return usuarios;		
+		//Al terminar el ciclo while, devolvemos el usuarios
+		
+		return usuarios;
 	}
 	
 }

@@ -8,6 +8,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.CardLayout;
 
 import vistas.VistaPrincipal;
@@ -21,6 +22,7 @@ public class VistaApp extends JFrame {
 	private JMenuItem menuItemPrincipal, menuItemJuegos, menuItemPerfil;
 	private JPanel ventanas;
 	private JPanel vPrincipal;
+	//Creamos el objeto vistaPrincipal desde la clase VistaPrincipal
 	VistaPrincipal vistaPrincipal = new VistaPrincipal();
 	
 	public VistaApp() 
@@ -37,6 +39,7 @@ public class VistaApp extends JFrame {
 		ventanas = new JPanel();
 		contentPane.add(ventanas, BorderLayout.NORTH);
 		ventanas.setLayout(new CardLayout(0, 0));
+		//Implantamos vistaPrincipal
 		ventanas.add(vistaPrincipal, "VPCard");		
         
 		//Menu superior e items
