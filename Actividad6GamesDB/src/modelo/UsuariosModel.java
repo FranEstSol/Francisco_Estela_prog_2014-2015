@@ -19,9 +19,10 @@ public class UsuariosModel
 	
 	public ArrayList<String> usuarios = null;
 	
-	public UsuariosModel(Connection conexion2) 
-	{
-		this.conexion=conexion2;
+	public UsuariosModel() {
+		//Obtiene la conexión desde la clase ConexionDB
+		conexion = ConexionDB.getConexion();
+		//Inicializa el ArrayList de usuarios
 		usuarios = new ArrayList<String>();
 	}
 
@@ -45,7 +46,16 @@ public class UsuariosModel
 			exceptionSQL.printStackTrace();
 		}
 		//Al terminar el ciclo while, devolvemos el usuarios
-		
+		finally {
+			try {
+				conexion.close();
+				resultados.close();
+				instruccion.close();
+			}
+			catch (SQLException excepcionSQL) {
+				excepcionSQL.printStackTrace();
+			}
+		}
 		return usuarios;
 	}
 	

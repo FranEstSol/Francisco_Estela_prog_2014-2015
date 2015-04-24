@@ -23,8 +23,12 @@ public class VistaPrincipal extends JPanel
 	private JButton btnLogin, btnRegistrarse, btnJuegos, btnPerfil;
 	
 	
+	
 	public VistaPrincipal() 
 	{
+		UsuariosModel usuarios;			
+		usuarios = new UsuariosModel ();
+		
 		//Ventana
 		setLayout (null);
 		this.setBounds(0,0, 431, 495);
@@ -49,12 +53,7 @@ public class VistaPrincipal extends JPanel
 		comboBoxUsuario.setBounds(10, 235, 150, 20);
 		add(comboBoxUsuario);
 		//Datos del Combobox
-
-		ConexionDB gameDB; 
-		UsuariosModel usuarios;
-		//Objeto generado e informacion preparada para "enviar" a la clase ConexionDB
-		gameDB = new ConexionDB("localhost", "games", "root", "");				
-		usuarios = new UsuariosModel (gameDB.getConexion());
+		
 		Iterator<String> it = usuarios.UserData().iterator();
 		while (it.hasNext())
 		{
