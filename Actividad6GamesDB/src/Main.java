@@ -12,7 +12,6 @@ public class Main
 	{		
 		//Objeto generado e informacion preparada para "enviar" a la clase ConexionDB/ConexionDB getInstance
 		gameDB = ConexionDB.getInstance("localhost", "games", "root", "");
-		
 		//Comprobacion del estado final de la conexion
 		if(gameDB.conectarDB()==true)
 		{		
