@@ -22,12 +22,11 @@ public class VistaPrincipal extends JPanel
 	private JPasswordField passwordField;
 	private JButton btnLogin, btnRegistrarse, btnJuegos, btnPerfil;
 	
-	
+	UsuariosModel usuarios;
 	
 	public VistaPrincipal() 
 	{
-		UsuariosModel usuarios;			
-		usuarios = new UsuariosModel ();
+		UsuariosModel usuarios = new UsuariosModel();
 		
 		//Ventana
 		setLayout (null);

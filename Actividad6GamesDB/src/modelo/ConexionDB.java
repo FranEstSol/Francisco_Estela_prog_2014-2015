@@ -15,12 +15,16 @@ public class ConexionDB
 	private String user;
 	private String pass;
 	private String url;
-	 
-	//Conexion
-	private static Connection conexion;
 	
-	//traemos la informacion desde la clase Main
-	public ConexionDB(String HOST, String BBDD, String USER, String PASS) 
+	//Conexion
+	private static Connection conexion = null; //Maneja la conexion
+	
+	//Instancia unica
+	private static ConexionDB instance =null;
+	
+	//Recibe los datos desde la clase ConexionDB/ConexionDB get instance
+	//Envia el montaje de informacion a ConexionDB/connectDB
+	private ConexionDB(String HOST, String BBDD, String USER, String PASS) 
 	{
 		this.host=HOST;
 		this.bbdd=BBDD;
@@ -30,7 +34,20 @@ public class ConexionDB
 		this.url="jdbc:mysql://" + this.host + "/" + this.bbdd;
 	}
 
-	public boolean connectDB()
+	//Recibe desde Main la informacion para montar la instance, comprobando si es null o no.
+	//En caso de ser null, la montara. Si no es null, devolvera la informacion que ya tiene.
+	public static ConexionDB getInstance (String HOST, String BBDD, String USER, String PASS)
+	{
+		if (instance == null)
+		{
+			instance = new ConexionDB(HOST, BBDD, USER, PASS);
+		}			
+		return instance;
+	}
+	//Conexion a la base de datos. 
+	//Recibe el montaje de informacion desde ConexionDB/ConexionDB (Arriba)
+	//Devuelve True o False a Main/gameDB.connectDB()
+	public boolean conectarDB()
 	{
 		try
 		{
