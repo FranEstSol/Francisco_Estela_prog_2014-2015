@@ -1,8 +1,12 @@
+import vistas.VistaApp;
+
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		VistaApp vistaApp = new VistaApp(); //Inicializamos VistaApp
+		vistaApp.setVisible(true); //Hacemos visible VistaApp
 
 	}
 
