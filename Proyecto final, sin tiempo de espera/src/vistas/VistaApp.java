@@ -23,8 +23,7 @@ public class VistaApp extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0)); //Crea un cardLayout
-		contentPane.add(vistaMain, "VISTA_PRINCIPAL"); //Añade VistaMain() al cardLayout
-		
+		contentPane.add(vistaMain, "VISTA_MAIN"); //Añade VistaMain() al cardLayout
 	}
 
 }
