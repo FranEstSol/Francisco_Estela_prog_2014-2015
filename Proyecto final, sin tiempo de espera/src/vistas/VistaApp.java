@@ -15,7 +15,7 @@ public class VistaApp extends JFrame {
 		
 		//Ventana
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 321, 412);
+		setBounds(100, 100, 321, 447);
 		setResizable(false);
 		
 		//Contenedor

@@ -20,24 +20,24 @@ public class VistaMain extends JPanel{
 		//Etiqueta paciente
 		labelPaciente = new JLabel("Acceder como Paciente");
 		labelPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPaciente.setBounds(10, 11, 289, 14);
+		labelPaciente.setBounds(10, 89, 301, 14);
 		setLayout(null);
 		add(labelPaciente);
 		
 		//Botón login paciente
 		btnLoginPaciente = new JButton("Acceder");
-		btnLoginPaciente.setBounds(97, 36, 115, 23);
+		btnLoginPaciente.setBounds(107, 114, 107, 23);
 		add(btnLoginPaciente);
 		
 		//Etiqueta médico
 		labelMedico = new JLabel("Acceder como Médico");
 		labelMedico.setHorizontalAlignment(SwingConstants.CENTER);
-		labelMedico.setBounds(10, 114, 289, 14);
+		labelMedico.setBounds(10, 271, 301, 14);
 		add(labelMedico);
 		
 		//Botón login médico
 		btnLoginMedico = new JButton("Acceder");
-		btnLoginMedico.setBounds(97, 139, 115, 23);
+		btnLoginMedico.setBounds(107, 296, 107, 23);
 		add(btnLoginMedico);
 		
 	}
