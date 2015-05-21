@@ -6,14 +6,19 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.SwingConstants;
 
+import java.awt.CardLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class VistaMain extends JPanel{
+
+public class VistaMain extends JPanel {
 	
 		//INICIALIZACIÓN DE VARIABLES
 		JButton btnLoginPaciente;
 		JButton btnLoginMedico;
 		JLabel labelPaciente;
 		JLabel labelMedico;
+		VistaApp vistaApp;
 
 	public VistaMain() {
 		
@@ -37,6 +42,11 @@ public class VistaMain extends JPanel{
 		
 		//Botón login médico
 		btnLoginMedico = new JButton("Acceder");
+		btnLoginMedico.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VistaApp vistaApp = new VistaApp("VISTA_LOGIN");
+			}
+		});
 		btnLoginMedico.setBounds(107, 296, 107, 23);
 		add(btnLoginMedico);
 		

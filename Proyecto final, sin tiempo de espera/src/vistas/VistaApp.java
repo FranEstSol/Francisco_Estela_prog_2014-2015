@@ -9,9 +9,11 @@ public class VistaApp extends JFrame {
 	
 	//INICIALIZACIÓN DE VARIABLES
 	VistaMain vistaMain = new VistaMain(); //Inicializa vistaMain()
+	VistaLogin vistaLogin = new VistaLogin(); //Inicializa VistaLogin()
 	private JPanel contentPane;
+	CardLayout cl;
 
-	public VistaApp() {
+	public VistaApp(String vista) {
 		
 		//Ventana
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,11 +21,15 @@ public class VistaApp extends JFrame {
 		setResizable(false);
 		
 		//Contenedor
-		contentPane = new JPanel();
+		contentPane = new JPanel(new CardLayout()); //Crea un JPanel de tipo CardLayout
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new CardLayout(0, 0)); //Crea un cardLayout
 		contentPane.add(vistaMain, "VISTA_MAIN"); //Añade VistaMain() al cardLayout
+		contentPane.add(vistaLogin, "VISTA_LOGIN"); //Añade VistaLogin() al cardLayout
+		
+		cl = (CardLayout)(contentPane.getLayout());
+		cl.show(contentPane, vista);
+		
 	}
 
 }
