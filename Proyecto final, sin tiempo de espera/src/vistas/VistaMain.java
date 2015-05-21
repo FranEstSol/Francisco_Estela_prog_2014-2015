@@ -20,34 +20,35 @@ public class VistaMain extends JPanel {
 		JLabel labelMedico;
 		VistaApp vistaApp;
 
-	public VistaMain() {
+	public VistaMain(JPanel contentPane) {
 		
 		//Etiqueta paciente
 		labelPaciente = new JLabel("Acceder como Paciente");
 		labelPaciente.setHorizontalAlignment(SwingConstants.CENTER);
-		labelPaciente.setBounds(10, 89, 301, 14);
+		labelPaciente.setBounds(0, 81, 301, 14);
 		setLayout(null);
 		add(labelPaciente);
 		
 		//Botón login paciente
 		btnLoginPaciente = new JButton("Acceder");
-		btnLoginPaciente.setBounds(107, 114, 107, 23);
+		btnLoginPaciente.setBounds(98, 106, 107, 23);
 		add(btnLoginPaciente);
 		
 		//Etiqueta médico
 		labelMedico = new JLabel("Acceder como Médico");
 		labelMedico.setHorizontalAlignment(SwingConstants.CENTER);
-		labelMedico.setBounds(10, 271, 301, 14);
+		labelMedico.setBounds(0, 243, 301, 14);
 		add(labelMedico);
 		
 		//Botón login médico
 		btnLoginMedico = new JButton("Acceder");
 		btnLoginMedico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				VistaApp vistaApp = new VistaApp("VISTA_LOGIN");
+				CardLayout cl = (CardLayout) contentPane.getLayout(); //Obtenemos el layout manager de contentPane
+				cl.show(contentPane, "VISTA_LOGIN"); //Mostramos vista login en el contentPane
 			}
 		});
-		btnLoginMedico.setBounds(107, 296, 107, 23);
+		btnLoginMedico.setBounds(98, 267, 107, 23);
 		add(btnLoginMedico);
 		
 	}

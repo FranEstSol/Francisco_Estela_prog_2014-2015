@@ -8,12 +8,11 @@ import javax.swing.border.EmptyBorder;
 public class VistaApp extends JFrame {
 	
 	//INICIALIZACIÓN DE VARIABLES
-	VistaMain vistaMain = new VistaMain(); //Inicializa vistaMain()
-	VistaLogin vistaLogin = new VistaLogin(); //Inicializa VistaLogin()
-	private JPanel contentPane;
-	CardLayout cl;
+	JPanel contentPane;
+	VistaMain vistaMain;
+	VistaLogin vistaLogin;
 
-	public VistaApp(String vista) {
+	public VistaApp() {
 		
 		//Ventana
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,11 +23,11 @@ public class VistaApp extends JFrame {
 		contentPane = new JPanel(new CardLayout()); //Crea un JPanel de tipo CardLayout
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.add(vistaMain, "VISTA_MAIN"); //Añade VistaMain() al cardLayout
-		contentPane.add(vistaLogin, "VISTA_LOGIN"); //Añade VistaLogin() al cardLayout
 		
-		cl = (CardLayout)(contentPane.getLayout());
-		cl.show(contentPane, vista);
+		VistaMain vistaMain = new VistaMain(contentPane); //Inicializa vistaMain pasándole el contentPane
+		VistaLogin vistaLogin = new VistaLogin();
+		contentPane.add(vistaMain, "VISTA_MAIN"); //Añade VistaMain al cardLayout
+		contentPane.add(vistaLogin, "VISTA_LOGIN"); //Añade VistaLogin al cardLayout
 		
 	}
 
