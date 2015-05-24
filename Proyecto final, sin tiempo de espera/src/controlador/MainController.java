@@ -5,11 +5,11 @@ import modelo.ConexionDB;
 import modelo.UsuariosModel;
 
 public class MainController {
-	static ConexionDB horariosDB; 
+	  
 	//Instancia unica
 	private static MainController instance = null;
-	//Objeto gameDB desde ConexionDB
-	ConexionDB gameDB;
+	//Objeto horariosDB desde ConexionDB
+	ConexionDB horariosDB;
 	//Objetos vApp y vJuegos desde las vistas VistaApp y VistaJuegos
 	VistaApp vApp;
 	//VistaJuegos vJuegos;
@@ -33,59 +33,52 @@ public class MainController {
 		}
 	}
 	
+	//PUNTO DE ROTURA
+	
 	//Implementacion SingleTon
-	public static MainController getInstance() 
-	{
+	public static MainController getInstance() {
 		if (instance == null)
 		{
 			instance = new MainController();
 		}
 		return instance;
 	}
-/*
-	public void showApp() 
-	{
+
+	public void showApp() {
 		//Carga le objeto vApp desde VistaApp
 		vApp = new VistaApp();
-		//llama al metodo showPrincipal
+		//llama al metodo showMain
 		showMain();
 		//Vuelve visible la VistaApp a traves del objeto
 		vApp.setVisible(true);
 	}
-	//Metodo showMain
-	public void  showMain() 
-	{
-		//Llama al metodo showPrincipal en VistaApp a traves del objeto vApp y le envia los usuarios del metodo UserData desde en UsuariosModel (ArrayList)
-		vApp.showPrincipal();
-	}
-	
-	//Metodo showMain
-	public void showMain() 
-	{
-		//Si usuarios es null, se crea el objetos usuarios desde UsuariosModel (relacionado con el objeto de arriba)
-		if (usuarios==null) 
-		{
-			usuarios=new UsuariosModel();
-		}
-		//Carga le objeto vApp desde VistaApp
-		vApp = new VistaApp();
-		//llama al metodo showPrincipal
-		//showPrincipal();
-		//Vuelve visible la VistaApp a traves del objeto
-		vApp.setVisible(true);
-	}*/
 
+	//Metodos de llamamiento a los metodos que hacen visibles las vistas
 	//Metodo showMain
-	/*public void  showMain() 
+	public void showMain() {
+		System.out.println("ventana Main llamada");
+		vApp.showMain();
+	}
+
+	//Metodo showLogin
+	public void showLogin() {
+		System.out.println("ventana Login llamada");
+		//Si usuarios es null, se crea el objetos usuarios desde UsuariosModel (relacionado con el objeto de arriba)
+		if (nombre==null) {
+			nombre=new UsuariosModel();
+		}
+		vApp.showLogin(nombre.ArrNombre());
+	}
+
+	//Metodo showMedico
+	public void showMedico() 
 	{
-		//Llama al metodo showPrincipal en VistaApp a traves del objeto vApp y le envia los usuarios del metodo UserData desde en UsuariosModel (ArrayList)
-		vApp.showPrincipal(usuarios.UserData());
+		vApp.showMedico();
 	}
-	//Metodo showJuegos
-	public void showJuegos() 
-	{		
-		//Llama al metodo showJuegos en VistaApp a traves del objeto vApp
-		vApp.showJuegos();		
+
+	//Metodo showUsuario
+	public void showUsuario() 
+	{
+		vApp.showUsuario();
 	}
-*/
 }

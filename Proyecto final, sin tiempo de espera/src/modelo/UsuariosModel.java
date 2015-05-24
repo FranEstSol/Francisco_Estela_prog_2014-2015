@@ -12,6 +12,7 @@ public class UsuariosModel {
 	private final static String GETNOMBRE ="nombre";
 	private final static String GETUSUARIO ="usuario";
 	private final static String GETPASSWORD ="password";
+	private final static String GETCONSULTA ="consulta";
 	
 	//Variables de conexion
 	private Connection conexion = null; //Maneja la conexion
@@ -19,16 +20,21 @@ public class UsuariosModel {
 	
 	//Variables de consulta
 	private ResultSet resultados = null;
-	private ArrayList<String> usuarios = null;
+	private ArrayList<String> usuario = null;
 	private ArrayList<String> nombre = null;
 	private ArrayList<String> password = null;
+	private ArrayList<String> consulta = null;
+
 	
 	public UsuariosModel() {
 		//Obtiene la conexión desde la clase ConexionDB
 		conexion = ConexionDB.getConexion();		
 	}
-
+/*
 	public ArrayList<String> ArrUsuario() {
+		
+		//Inicializa el ArrayList de usuarios
+		usuario = new ArrayList<String>();
 		try {
 			//Se crea el statement respecto a la conexion y se combierte en una instruccion
 			instruccion = this.conexion.createStatement();
@@ -36,7 +42,7 @@ public class UsuariosModel {
 			resultados = instruccion.executeQuery(GETALL);
 			//Ciclo while que añade cada resultado de resultados en la Array "usuarios"
 			while(resultados.next()) {	
-				usuarios.add(resultados.getString(GETUSUARIO));
+				usuario.add(resultados.getString(GETUSUARIO));
 			}
 		} 
 		catch (SQLException exceptionSQL) {
@@ -45,10 +51,13 @@ public class UsuariosModel {
 		}
 		//Al terminar el ciclo while, devolvemos el usuarios	
 		close();
-		return usuarios;
+		return usuario;
 	}	
-	
+	*/
 	public ArrayList<String> ArrNombre() {
+		
+		//Inicializa el ArrayList de nombre
+		nombre = new ArrayList<String>();
 		try {
 			//Se crea el statement respecto a la conexion y se combierte en una instruccion
 			instruccion = this.conexion.createStatement();
@@ -64,11 +73,14 @@ public class UsuariosModel {
 			exceptionSQL.printStackTrace();
 		}
 		//Al terminar el ciclo while, devolvemos el nombre
-		close();
+		//close();
 		return nombre;
 	}	
 	
 	public ArrayList<String> ArrPassword() {
+		
+		//Inicializa el ArrayList de usuarios
+		password = new ArrayList<String>();
 		try {
 			//Se crea el statement respecto a la conexion y se combierte en una instruccion
 			instruccion = this.conexion.createStatement();
@@ -87,6 +99,7 @@ public class UsuariosModel {
 		close();
 		return password;
 	}	
+	
 	public void close(){
 		try {
 			conexion.close();
