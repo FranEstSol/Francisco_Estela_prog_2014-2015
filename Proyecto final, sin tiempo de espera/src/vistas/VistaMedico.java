@@ -9,8 +9,16 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import controlador.MainController;
+import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
 
 public class VistaMedico extends JPanel {
+	
+	JButton btnAtras;
+	JButton btnAceptar;
+	JLabel lblHoraDeLlamada;
+	JComboBox comboBoxHoras;
+	
 
 	/**
 	 * Create the panel.
@@ -18,13 +26,25 @@ public class VistaMedico extends JPanel {
 	public VistaMedico() {
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("VISTA MEDICO");
-		lblNewLabel.setBounds(174, 78, 120, 29);
-		add(lblNewLabel);
+		//Label Hora de llamada
+		lblHoraDeLlamada = new JLabel("Hora de llamada:");
+		lblHoraDeLlamada.setBounds(30, 152, 115, 14);
+		add(lblHoraDeLlamada);
 		
-		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(151, 243, 89, 23);
+		//Botón atrás
+		btnAtras = new JButton("Atras");
+		btnAtras.setBounds(30, 53, 89, 23);
 		add(btnAtras);
+		
+		//Botón aceptar
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(91, 251, 115, 23);
+		add(btnAceptar);
+		
+		//Combo Box horas de llamada
+		comboBoxHoras = new JComboBox();
+		comboBoxHoras.setBounds(155, 149, 115, 20);
+		add(comboBoxHoras);
 		
 		//Funciones de los botones
 		//Boton atras
@@ -37,5 +57,4 @@ public class VistaMedico extends JPanel {
 				});
 
 	}
-
 }

@@ -9,8 +9,16 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import controlador.MainController;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class VistaUsuario extends JPanel {
+	
+	private JTable tablaConsultas;
+	JLabel lblConsultasActivas;
+	JButton btnAtras;
+	JScrollPane scrollPaneConsultas;
+	
 
 	/**
 	 * Create the panel.
@@ -18,23 +26,34 @@ public class VistaUsuario extends JPanel {
 	public VistaUsuario() {
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Vista Usuario");
-		lblNewLabel.setBounds(180, 61, 105, 19);
-		add(lblNewLabel);
+		//Label consultas activas
+		JLabel lblConsultasActivas = new JLabel("Consultas activas");
+		lblConsultasActivas.setBounds(10, 72, 114, 14);
+		add(lblConsultasActivas);
 		
-		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(169, 246, 89, 23);
+		//Botón atrás
+		btnAtras = new JButton("Atras");
+		btnAtras.setBounds(10, 11, 89, 23);
 		add(btnAtras);
+		
+		//Scroll Pane consultas
+		scrollPaneConsultas = new JScrollPane();
+		scrollPaneConsultas.setBounds(10, 97, 286, 278);
+		add(scrollPaneConsultas);
+		
+		//Tabla consultas
+		tablaConsultas = new JTable();
+		scrollPaneConsultas.setViewportView(tablaConsultas);
+		
 
 		//Funciones de los botones
 		//Boton atras
 				btnAtras.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						//Llama al metodo showMain mediante MainController.getInstance
+						//Llama al método showMain mediante MainController.getInstance
 						System.out.println("Boton de Atras pulsado");
 						MainController.getInstance().showMain();
 					}
 				});
 	}
-
 }
