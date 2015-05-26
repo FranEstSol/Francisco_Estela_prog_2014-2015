@@ -11,15 +11,11 @@ public class VistaApp extends JFrame {
 
 	//INICIALIZACIÓN DE VARIABLES
 	JPanel contentPane;
-/*	VistaMain vistaMain;
-	VistaLogin vistaLogin;
-	VistaMedico vistaMedico;
-	VistaUsuario vistaUsuario;
-	*/
+
 	VistaMain vistaMain = new VistaMain(); //Inicializa vistaMain pasándole el contentPane
-	VistaLogin vistaLogin = new VistaLogin();
-	VistaMedico vistaMedico = new VistaMedico();
-	VistaUsuario vistaUsuario = new VistaUsuario();
+	VistaLogin vistaLogin = new VistaLogin(); //Inicializa vistaLogin pasándole el contentPane
+	VistaMedico vistaMedico = new VistaMedico(); //Inicializa vistaMedico pasándole el contentPane
+	VistaUsuario vistaUsuario = new VistaUsuario(); //Inicializa vistaUsuario pasándole el contentPane
 	
 	public VistaApp() {
 
@@ -36,8 +32,8 @@ public class VistaApp extends JFrame {
 		
 		contentPane.add(vistaMain, "VISTA_MAIN"); //Añade VistaMain al cardLayout
 		contentPane.add(vistaLogin, "VISTA_LOGIN"); //Añade VistaLogin al cardLayout
-		contentPane.add(vistaMedico, "VISTA_MEDICO");
-		contentPane.add(vistaUsuario, "VISTA_USUARIO");		
+		contentPane.add(vistaMedico, "VISTA_MEDICO"); //Añade vistaMedico al cardLayout
+		contentPane.add(vistaUsuario, "VISTA_USUARIO");	//Añade vistaUsuario al cardLayout	
 	}
 
 	//Metodos de llamamiento de las vistas

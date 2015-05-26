@@ -63,7 +63,7 @@ public class UsuariosModel {
 			instruccion = this.conexion.createStatement();
 			//la instruccion ejecuta un Query que esta definido arriba (en este caso, GETALL)
 			resultados = instruccion.executeQuery(GETALL);
-			//Ciclo while que añade cada resultado de resultados en la Array "usuarios"
+			//Ciclo while que añade cada resultado de resultados en la Array "nombre"
 			while(resultados.next()) {	
 				nombre.add(resultados.getString(GETNOMBRE));
 			}
@@ -73,7 +73,7 @@ public class UsuariosModel {
 			exceptionSQL.printStackTrace();
 		}
 		//Al terminar el ciclo while, devolvemos el nombre
-		//close();
+		close();
 		return nombre;
 	}	
 	
@@ -102,7 +102,6 @@ public class UsuariosModel {
 	
 	public void close(){
 		try {
-			conexion.close();
 			resultados.close();
 			instruccion.close();
 		}

@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import controlador.MainController;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 public class VistaUsuario extends JPanel {
 	
@@ -19,10 +20,8 @@ public class VistaUsuario extends JPanel {
 	JButton btnAtras;
 	JScrollPane scrollPaneConsultas;
 	
-
-	/**
-	 * Create the panel.
-	 */
+	private JTextField textFieldPrueba;
+	
 	public VistaUsuario() {
 		setLayout(null);
 		
@@ -46,14 +45,16 @@ public class VistaUsuario extends JPanel {
 		scrollPaneConsultas.setViewportView(tablaConsultas);
 		
 
+		
 		//Funciones de los botones
 		//Boton atras
-				btnAtras.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						//Llama al método showMain mediante MainController.getInstance
-						System.out.println("Boton de Atras pulsado");
-						MainController.getInstance().showMain();
-					}
-				});
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Llama al método showMain mediante MainController.getInstance
+				System.out.println("Boton de Atras pulsado");
+				MainController.getInstance().showMain();
+				
+			}
+		});
 	}
 }
