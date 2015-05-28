@@ -87,10 +87,10 @@ public class MainController {
 		vApp.showUsuario();
 	}
 	public boolean logintest() {
-		String pass="";
+		char[] pass;
 		pass=VistaLogin.passField;
 		
-		if (pass.equals("")){
+		if(pass.length == 0){
 			System.out.println("Devuelto FALSE desde logintest");
 		return false;
 		}
