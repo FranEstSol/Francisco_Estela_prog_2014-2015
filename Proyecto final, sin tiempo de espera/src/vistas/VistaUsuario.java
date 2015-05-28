@@ -19,6 +19,7 @@ import controlador.MainController;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.TableColumnModel;
 
 import modelo.UsuariosModel;
 
@@ -27,6 +28,7 @@ public class VistaUsuario extends JPanel {
 	JLabel lblConsultasActivas;
 	JButton btnAtras;
 	JScrollPane scrollPaneConsultas;
+	JButton btnActualizar;
 	
 	public VistaUsuario() {
 		setLayout(null);
@@ -38,13 +40,23 @@ public class VistaUsuario extends JPanel {
 		
 		//Botón atrás
 		btnAtras = new JButton("Atras");
-		btnAtras.setBounds(10, 11, 89, 23);
+		btnAtras.setBounds(10, 11, 98, 23);
 		add(btnAtras);
 		
 		//Scroll Pane consultas
 		scrollPaneConsultas = new JScrollPane();
 		scrollPaneConsultas.setBounds(10, 97, 286, 278);
 		add(scrollPaneConsultas);
+		
+		//Botón actualizar
+		btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainController.getInstance().showUsuario();
+			}
+		});
+		btnActualizar.setBounds(198, 11, 98, 23);
+		add(btnActualizar);
 		
 		//tablaConsultas = new JTable();
 		//scrollPaneConsultas.setViewportView(tablaConsultas);
@@ -70,7 +82,7 @@ public class VistaUsuario extends JPanel {
 	    Vector<String> nombresColumnas = new Vector<String>();
 	    nombresColumnas.add("Doctor/a");
 	    nombresColumnas.add("Consulta");
-	    nombresColumnas.add("Hora de llamada");
+	    nombresColumnas.add("Hora");
 	    int columnCount = 3;
 
 	    //Datos de la tabla
@@ -83,7 +95,14 @@ public class VistaUsuario extends JPanel {
 	        data.add(vector);
 	    }
 
-	    tablaConsultas = new JTable(data, nombresColumnas);
+	    tablaConsultas = new JTable(data, nombresColumnas) {
+	    	public boolean isCellEditable(int row, int column) {
+	    		return false;
+	    	}
+	    };
+	    TableColumnModel columnModel = tablaConsultas.getColumnModel();
+	    columnModel.getColumn(0).setPreferredWidth(250);
+	    
 		scrollPaneConsultas.setViewportView(tablaConsultas);
 		
 		//Cierro la conexion desde aquí porque desde UsuariosModel daba problemas
