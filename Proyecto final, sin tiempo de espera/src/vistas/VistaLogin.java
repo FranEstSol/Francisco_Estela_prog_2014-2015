@@ -4,7 +4,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import controlador.Autenticar;
+//import controlador.Autenticar;
 import controlador.MainController;
 
 import java.awt.CardLayout;

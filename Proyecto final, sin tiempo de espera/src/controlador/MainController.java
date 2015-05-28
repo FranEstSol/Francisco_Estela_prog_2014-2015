@@ -13,7 +13,7 @@ public class MainController {
 	ConexionDB horariosDB;
 	//Objetos de las vistas
 	VistaApp vApp;
-	Autenticar auth;
+	//Autenticar auth;
 	//Objeto usuarios desde UsuariosModel
 	UsuariosModel usuarios=null;
 	UsuariosModel nombre=null;
@@ -90,7 +90,7 @@ public class MainController {
 		String pass="";
 		pass=VistaLogin.passField;
 		
-		if (pass ==""){
+		if (pass.equals("")){
 			System.out.println("Devuelto FALSE desde logintest");
 		return false;
 		}
