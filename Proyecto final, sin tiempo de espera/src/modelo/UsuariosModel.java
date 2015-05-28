@@ -30,7 +30,7 @@ public class UsuariosModel {
 		//Obtiene la conexión desde la clase ConexionDB
 		conexion = ConexionDB.getConexion();		
 	}
-/*
+
 	public ArrayList<String> ArrUsuario() {
 		
 		//Inicializa el ArrayList de usuarios
@@ -53,7 +53,7 @@ public class UsuariosModel {
 		close();
 		return usuario;
 	}	
-	*/
+	
 	public ArrayList<String> ArrNombre() {
 		
 		//Inicializa el ArrayList de nombre
@@ -77,7 +77,7 @@ public class UsuariosModel {
 		return nombre;
 	}	
 	
-/*	public ArrayList<String> ArrPassword() {
+	public ArrayList<String> ArrPassword() {
 		
 		//Inicializa el ArrayList de usuarios
 		password = new ArrayList<String>();
@@ -99,7 +99,7 @@ public class UsuariosModel {
 		close();
 		return password;
 	}	
-	*/
+	
 	public void close(){
 		try {
 			resultados.close();

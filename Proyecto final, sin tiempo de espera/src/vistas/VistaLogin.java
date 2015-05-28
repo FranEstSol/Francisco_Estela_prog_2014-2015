@@ -4,6 +4,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+
 //import controlador.Autenticar;
 import controlador.MainController;
 
@@ -16,19 +17,22 @@ import java.util.Iterator;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+
 public class VistaLogin extends JPanel {
 	
 	//INICIALIZACIÓN DE VARIABLES
-	JComboBox comboBoxMedicos;
+	public static JComboBox comboBoxMedicos;
 	JButton btnLogin;
 	JLabel lblUsuario;
 	JLabel lblPassword;
-	JLabel lblAlerta;	
+	public static JLabel lblAlerta;	
 	JButton btnAtras;
 	JPasswordField passwordField;
-	
+	public static String selectedUser ="";
 	public static char[] passField=null;
-	
+	//JComboBox comboBoxPassword;
 	public VistaLogin() {
 		setLayout(null);
 		
@@ -63,7 +67,18 @@ public class VistaLogin extends JPanel {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(60, 142, 200, 20);
 		add(passwordField);
+		
+		/*comboBoxPassword = new JComboBox();
+		comboBoxPassword.setBounds(60, 0, 200, 20);
+		add(comboBoxPassword);*/
 	
+		//Funcion del combobox Medicos
+		comboBoxMedicos.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				selectedUser=(String) comboBoxMedicos.getSelectedItem();
+			}
+		});
+		
 		//Funciones de los botones
 		//Boton login
 		btnLogin.addActionListener(new ActionListener() {
@@ -72,7 +87,7 @@ public class VistaLogin extends JPanel {
 				System.out.println("Boton de Login pulsado");
 				System.out.println("Texto recogido del texto al pulsar login:  "+passwordField.getPassword());
 				passField=passwordField.getPassword();
-				MainController.getInstance().logintest();
+				MainController.getInstance().showMedico();
 			}
 		});
 
@@ -86,7 +101,7 @@ public class VistaLogin extends JPanel {
 		});
 	}
 	//Metodo putUsuarios que añade la informacion al combobox
-	//Recibe el ArrayList usuarios desde showPrincipal (En VistaApp) y, mediante el Iterator, lo monta en el combobox.
+	//Recibe el ArrayList usuarios desde showMain (En VistaApp) y, mediante el Iterator, lo monta en el combobox.
 	public void putUsuarios(ArrayList nombre) {
 		//Limpia el combobox para evitar repetir usuarios y volvemos a rellenarlo.
 		comboBoxMedicos.removeAllItems();
@@ -95,19 +110,16 @@ public class VistaLogin extends JPanel {
 		while (it.hasNext()) {
 			System.out.println("AÑADIDO EL MEDICO AL COMBOBOX ");
 			comboBoxMedicos.addItem((String)it.next());
-		}	
+		}		
 	}
-	
-	//ESTO ME CABREA
-/*	public static boolean getPass() {
-		if(passField == ""){
-			System.out.println("falso");
-			System.out.println("bool "+passField);
-			return false;
-		}else {
-		System.out.println("verdadero");
-		System.out.println("bool "+passField);
-		return true;}					
-	}		*/	
-	
+/*	public void putPassword(ArrayList password) {
+		//Limpia el combobox para evitar repetir usuarios y volvemos a rellenarlo.
+		comboBoxPassword.removeAllItems();
+		//Rellena el combobox
+		Iterator<String> it =password.iterator();
+		while (it.hasNext()) {
+			System.out.println("AÑADIDO PASSWORD AL COMBOBOX ");
+			comboBoxPassword.addItem((String)it.next());
+		}		
+	}*/
 }

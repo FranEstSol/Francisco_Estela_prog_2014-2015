@@ -1,12 +1,14 @@
 package controlador;
 
+import java.util.Iterator;
+
 import vistas.VistaApp;
 import vistas.VistaLogin;
 import modelo.ConexionDB;
 import modelo.UsuariosModel;
 
 public class MainController {
-	  
+
 	//Instancia unica
 	private static MainController instance = null;
 	//Objeto horariosDB desde ConexionDB
@@ -33,7 +35,7 @@ public class MainController {
 			System.out.println("Conexion fallida");
 		}
 	}
-		
+
 	//Implementacion SingleTon
 	public static MainController getInstance() {
 		if (instance == null)
@@ -72,13 +74,10 @@ public class MainController {
 	//Metodo showMedico
 	public void showMedico() {	
 		if (logintest()==true){
-			System.out.println("ventana Medico llamada. ShowMedico ha dado TRUE");
-			System.out.println("en showMedico se ha recogido el valor de contraseña: "+VistaLogin.passField);
-			//vApp.showMedico();
+			vApp.showMedico();
 		}
 		else {
-			System.out.println("showMedico ha dado FALSE");
-			System.out.println("en showMedico se ha recogido el valor de contraseña: "+VistaLogin.passField);
+			VistaLogin.lblAlerta.setText("Contraseña incorrecta");
 		}
 	}
 
@@ -86,17 +85,34 @@ public class MainController {
 	public void showUsuario() {
 		vApp.showUsuario();
 	}
+
 	public boolean logintest() {
 		char[] pass;
 		pass=VistaLogin.passField;
-		
-		if(pass.length == 0){
-			System.out.println("Devuelto FALSE desde logintest");
-		return false;
+
+		if(pass.length == 0){			
+			return false;
 		}
 		else {
 			System.out.println("Devuelto TRUE desde logintest");
 			return true;
+			}					
 		}
+		
 	}
-}
+	
+
+
+
+	/* EXPERIMENTO RARO PARA LA CONTRASEÑA. IGNORAR DE MOMENTO
+	  for (int i=0; i<=VistaLogin.comboBoxMedicos.getItemCount();i++){
+				if (VistaLogin.comboBoxMedicos.getSelectedItem()==VistaLogin.selectedUser){
+					for (int u=0; u==i;u++)
+						Iterator<String> it =password.iterator();
+					while (it.hasNext()) {
+						System.out.println("AÑADIDO EL MEDICO AL COMBOBOX ");
+						comboBoxMedicos.addItem((String)it.next());
+					}	
+				}
+				System.out.println();
+				i=i+14;*/
