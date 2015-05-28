@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class UsuariosModel {
 	//Consultas SQL preparadas
 	private final static String GETALL= "SELECT * FROM usuarios";
+	private final static String GETINFOCONSULTAS= "SELECT nombre, consulta, horario FROM usuarios";
 	private final static String GETNOMBRE ="nombre";
 	private final static String GETUSUARIO ="usuario";
 	private final static String GETPASSWORD ="password";
@@ -98,6 +99,22 @@ public class UsuariosModel {
 		//Al terminar el ciclo while, devolvemos el nombre
 		close();
 		return password;
+	}
+	
+	public ResultSet getInfoConsultas() {
+		
+		//Inicializa el ArrayList de usuarios
+		try {
+			//Se crea el statement respecto a la conexion y se combierte en una instruccion
+			instruccion = this.conexion.createStatement();
+			//la instruccion ejecuta un Query que esta definido arriba (en este caso, GETALL)
+			resultados = instruccion.executeQuery(GETINFOCONSULTAS);
+		} 
+		catch (SQLException exceptionSQL) {
+			System.out.println("Error en Statement");
+			exceptionSQL.printStackTrace();
+		}
+		return resultados;
 	}	
 	
 	public void close(){

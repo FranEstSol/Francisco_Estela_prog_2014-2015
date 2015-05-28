@@ -1,5 +1,6 @@
 package controlador;
 
+import java.sql.SQLException;
 import java.util.Iterator;
 
 import vistas.VistaApp;
@@ -99,7 +100,7 @@ public class MainController {
 			}					
 		}
 		
-	}
+}
 	
 
 

@@ -1,5 +1,7 @@
 package vistas;
 import java.awt.CardLayout;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -57,7 +59,13 @@ public class VistaApp extends JFrame {
 	}
 
 	//Metodo que hace visible VISTA_USUARIO (que corresponde a VistaUsuario)
-	public void showUsuario() {		
+	public void showUsuario() {
+		try {
+			vistaUsuario.buildTableModel();
+		} catch (SQLException e) {
+			System.out.println("Error al manejar el ResultSet");
+			e.printStackTrace();
+		}
 		CardLayout c = (CardLayout) this.contentPane.getLayout();
 		c.show(contentPane, "VISTA_USUARIO");		
 	}
