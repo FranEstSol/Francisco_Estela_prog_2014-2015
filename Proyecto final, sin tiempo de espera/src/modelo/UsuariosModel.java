@@ -77,7 +77,7 @@ public class UsuariosModel {
 		return nombre;
 	}	
 	
-	public ArrayList<String> ArrPassword() {
+/*	public ArrayList<String> ArrPassword() {
 		
 		//Inicializa el ArrayList de usuarios
 		password = new ArrayList<String>();
@@ -99,7 +99,7 @@ public class UsuariosModel {
 		close();
 		return password;
 	}	
-	
+	*/
 	public void close(){
 		try {
 			resultados.close();

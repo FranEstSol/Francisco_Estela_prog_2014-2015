@@ -1,6 +1,7 @@
 package controlador;
 
 import vistas.VistaApp;
+import vistas.VistaLogin;
 import modelo.ConexionDB;
 import modelo.UsuariosModel;
 
@@ -10,9 +11,9 @@ public class MainController {
 	private static MainController instance = null;
 	//Objeto horariosDB desde ConexionDB
 	ConexionDB horariosDB;
-	//Objetos vApp y vJuegos desde las vistas VistaApp y VistaJuegos
+	//Objetos de las vistas
 	VistaApp vApp;
-	//VistaJuegos vJuegos;
+	Autenticar auth;
 	//Objeto usuarios desde UsuariosModel
 	UsuariosModel usuarios=null;
 	UsuariosModel nombre=null;
@@ -32,9 +33,7 @@ public class MainController {
 			System.out.println("Conexion fallida");
 		}
 	}
-	
-	//PUNTO DE ROTURA
-	
+		
 	//Implementacion SingleTon
 	public static MainController getInstance() {
 		if (instance == null)
@@ -71,14 +70,12 @@ public class MainController {
 	}
 
 	//Metodo showMedico
-	public void showMedico() 
-	{
+	public void showMedico() {	
 		vApp.showMedico();
 	}
 
 	//Metodo showUsuario
-	public void showUsuario() 
-	{
+	public void showUsuario() {
 		vApp.showUsuario();
 	}
 }
