@@ -71,11 +71,32 @@ public class MainController {
 
 	//Metodo showMedico
 	public void showMedico() {	
-		vApp.showMedico();
+		if (logintest()==true){
+			System.out.println("ventana Medico llamada. ShowMedico ha dado TRUE");
+			System.out.println("en showMedico se ha recogido el valor de contraseña: "+VistaLogin.passField);
+			//vApp.showMedico();
+		}
+		else {
+			System.out.println("showMedico ha dado FALSE");
+			System.out.println("en showMedico se ha recogido el valor de contraseña: "+VistaLogin.passField);
+		}
 	}
 
 	//Metodo showUsuario
 	public void showUsuario() {
 		vApp.showUsuario();
+	}
+	public boolean logintest() {
+		String pass="";
+		pass=VistaLogin.passField;
+		
+		if (pass ==""){
+			System.out.println("Devuelto FALSE desde logintest");
+		return false;
+		}
+		else {
+			System.out.println("Devuelto TRUE desde logintest");
+			return true;
+		}
 	}
 }

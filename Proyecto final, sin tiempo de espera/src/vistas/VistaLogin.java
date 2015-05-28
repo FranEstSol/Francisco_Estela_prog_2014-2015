@@ -27,7 +27,7 @@ public class VistaLogin extends JPanel {
 	JButton btnAtras;
 	JPasswordField passwordField;
 	
-	public static String passField="";
+	public static String passField=null;
 	
 	public VistaLogin() {
 		setLayout(null);
@@ -72,7 +72,7 @@ public class VistaLogin extends JPanel {
 				System.out.println("Boton de Login pulsado");
 				System.out.println("Texto recogido del texto al pulsar login:  "+passwordField.getText());
 				passField=passwordField.getText();
-				MainController.getInstance().showMedico();
+				MainController.getInstance().logintest();
 			}
 		});
 
