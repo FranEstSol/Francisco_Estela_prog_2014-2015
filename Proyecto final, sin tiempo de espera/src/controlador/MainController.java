@@ -15,11 +15,12 @@ public class MainController {
 	ConexionDB horariosDB;
 	//Objetos de las vistas
 	VistaApp vApp;
-	//Autenticar auth;
 	//Objeto usuarios desde UsuariosModel
 	UsuariosModel usuarios=null;
 	UsuariosModel nombre=null;
 	UsuariosModel password=null;
+
+	public static String selectedUser="";
 
 	//Comprobacion del estado de la conexion
 	private MainController() 
@@ -72,12 +73,15 @@ public class MainController {
 	}
 
 	//Metodo showMedico
-	public void showMedico() {	
-		if (logintest()==true){
+	//Recibimos las 2 variables passString y selectedUser desde VistaLogin
+	public void showMedico(String password, String user) {	
+		//Mediante el if "llamamos" al metodo logintest para comprobar, lo primero, si la contraseña esta vacia o no. De paso le enviamos las 2 variables
+		if (logintest(password, user)==true){
 			vApp.showMedico();
 		}
 		else {
-			VistaLogin.lblAlerta.setText("Contraseña incorrecta");
+			System.out.println(selectedUser);
+
 		}
 	}
 
@@ -86,33 +90,33 @@ public class MainController {
 		vApp.showUsuario();
 	}
 
-	public boolean logintest() {
-		char[] pass;
-		pass=VistaLogin.passField;
-
-		if(pass.length == 0){			
+	//Metodo logintest
+	//Recibe las 2 variables y se pone en marcha.
+	public boolean logintest(String password, String user) {
+		//Si esta vacio, error de contraseña vacia devolviendo false
+		if(password.length() == 0){	
+			VistaLogin.lblAlerta.setText("Campo de contraseña vacio.");
 			return false;
 		}
+		//En caso de que la contraseña no este vacia, llega aqui
 		else {
-			System.out.println("Devuelto TRUE desde logintest");
-			return true;
-			}					
-		}
-		
-	}
-	
+			//Coje el con el objeto "nombre" llama al metodo "userpassword" que esta en usuariosModel, enviandole la variable "user" que llevamos un rato arrastrando.
+			//Ese metodo devuelve la contraseña relacionado con ese usuario
+			String pass = nombre.UserPassword(user);
+			//Comprueba si la contraseña que traiamos arrastrando (la de la caja de la contraseña) es la misma que la de la base de datos, traida desde UsuariosModel.
+			//Si son iguales, devuelve true y muestra el panel de los medicos.
+			if (password.equals(pass)){
+				System.out.println("LAS CONTRASEÑAS SON CORRECTAS!");
+				System.out.println("Devuelto TRUE desde logintest");
+				return true;
+			}
+			//En caso de que no sean iguales, da contraseña erronea
+			else {
+				System.out.println("CONTRASEÑA FAIL!");
+				VistaLogin.lblAlerta.setText("Contraseña incorrecta");
+				return false;
+			}
 
-
-
-	/* EXPERIMENTO RARO PARA LA CONTRASEÑA. IGNORAR DE MOMENTO
-	  for (int i=0; i<=VistaLogin.comboBoxMedicos.getItemCount();i++){
-				if (VistaLogin.comboBoxMedicos.getSelectedItem()==VistaLogin.selectedUser){
-					for (int u=0; u==i;u++)
-						Iterator<String> it =password.iterator();
-					while (it.hasNext()) {
-						System.out.println("AÑADIDO EL MEDICO AL COMBOBOX ");
-						comboBoxMedicos.addItem((String)it.next());
-					}	
-				}
-				System.out.println();
-				i=i+14;*/
+		}					
+	}		
+}
