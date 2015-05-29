@@ -27,11 +27,12 @@ public class VistaMedico extends JPanel {
 	
 	int minutos=0;
 	int horas=0;
+	public static String horario="";
 	
-
+	
 	public VistaMedico() {
 		setLayout(null);
-
+		
 		//Label Hora de llamada
 		lblHoraDeLlamada = new JLabel("Hora de llamada:");
 		lblHoraDeLlamada.setBounds(30, 11, 115, 14);
@@ -74,18 +75,27 @@ public class VistaMedico extends JPanel {
 		//comboBox Horas
 		comboBoxHoras.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				horas =  (int) comboBoxHoras.getSelectedItem();			
+				horas=(int) comboBoxHoras.getSelectedItem();						
 			}
 		});
 		//comboBox Minutos
 		comboBoxMinutos.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {				
-				minutos = (int) comboBoxMinutos.getSelectedItem();
-				
+				minutos=(int) comboBoxMinutos.getSelectedItem();				
 			}
 		});
 
 		//Funciones de los botones
+		//Boton aceptar
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Boton de Aceptar pulsado");
+				//Unimos horas y minutos y los juntamos en la variable "horario"
+				horario=horas+":"+minutos;
+				System.out.println("montaje: "+horario);
+				
+			}
+		});
 		//Boton atras
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

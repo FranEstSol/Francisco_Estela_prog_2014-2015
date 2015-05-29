@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import vistas.VistaApp;
 import vistas.VistaLogin;
+import vistas.VistaMedico;
 import modelo.ConexionDB;
 import modelo.UsuariosModel;
 
@@ -17,10 +18,13 @@ public class MainController {
 	//Objetos de las vistas
 	VistaApp vApp;
 	//Objeto usuarios desde UsuariosModel
-	UsuariosModel usuarios=null;
 	UsuariosModel nombre=null;
 	UsuariosModel password=null;
-
+	UsuariosModel horario=null;
+	//Objetos desde VistaMedicos para el montaje de la hora
+	VistaMedico horas=null;
+	VistaMedico minutos=null;
+	//public static String Horario="";
 	public static String selectedUser="";
 
 	//Comprobacion del estado de la conexion
@@ -119,7 +123,10 @@ public class MainController {
 				return false;
 			}
 		}					
-	}		
+	}	
+/*	public void setHorario(String user, String hora){
+		int hour = horario.MontarHorario(user, hora);
+	}*/
 }
 	
 

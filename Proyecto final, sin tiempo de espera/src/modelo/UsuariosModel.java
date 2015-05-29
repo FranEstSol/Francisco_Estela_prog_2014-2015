@@ -15,6 +15,8 @@ public class UsuariosModel {
 	private final static String GETINFOCONSULTAS= "SELECT nombre, consulta, horario FROM usuarios";
 	private final static String GETNOMBRE ="nombre";
 	private final static String GETPASSWORD ="password";
+	private final static String SETHOUR ="password";
+	
 
 	//Variables de conexion
 	private Connection conexion = null; //Maneja la conexion
@@ -77,6 +79,28 @@ public class UsuariosModel {
 		return password;
 	}
 
+/*	public int MontarHorario(String user, String hora) {
+
+		//Inicializa el ArrayList de password
+		int horario=0;
+		try {
+			//Se crea el statement respecto a la conexion y se combierte en una instruccion
+			instruccion = this.conexion.createStatement();
+			//la instruccion ejecuta un Query que esta definido arriba (en este caso, GETALL)
+			resultados = instruccion.executeQuery("UPDATE usuarios SET horario = "+hora+" WHERE nombre ="+"'" + user  + "'");
+			//Ciclo while que añade cada resultado (que solo es 1) en la variable password
+			while(resultados.next()) {	
+				horario = ((Statement) resultados).executeUpdate(SETHOUR);
+			}
+		} 
+		catch (SQLException exceptionSQL) {
+			System.out.println("Error en Statement");
+			exceptionSQL.printStackTrace();
+		}
+		//Al terminar el ciclo while, devolvemos la password
+		close();
+		return horario;
+	}*/
 	
 	public ResultSet getInfoConsultas() {
 		
