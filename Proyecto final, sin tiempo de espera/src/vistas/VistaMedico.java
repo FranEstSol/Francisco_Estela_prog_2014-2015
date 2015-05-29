@@ -27,7 +27,7 @@ public class VistaMedico extends JPanel {
 	
 	int minutos=0;
 	int horas=0;
-	public static String horario="";
+	
 	
 	
 	public VistaMedico() {
@@ -90,8 +90,10 @@ public class VistaMedico extends JPanel {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("Boton de Aceptar pulsado");
+				String horario = new String (horas+":"+minutos);
 				//Unimos horas y minutos y los juntamos en la variable "horario"
-				horario=horas+":"+minutos;
+				//horario=horas+":"+minutos;
+				MainController.getInstance().setHorario(horario);
 				System.out.println("montaje: "+horario);
 				
 			}

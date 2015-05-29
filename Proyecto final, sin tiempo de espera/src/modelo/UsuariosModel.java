@@ -79,19 +79,18 @@ public class UsuariosModel {
 		return password;
 	}
 
-/*	public int MontarHorario(String user, String hora) {
-
+	public String MontarHorario(String hora) {
 		//Inicializa el ArrayList de password
-		int horario=0;
+		String horario="";
 		try {
 			//Se crea el statement respecto a la conexion y se combierte en una instruccion
 			instruccion = this.conexion.createStatement();
 			//la instruccion ejecuta un Query que esta definido arriba (en este caso, GETALL)
-			resultados = instruccion.executeQuery("UPDATE usuarios SET horario = "+hora+" WHERE nombre ="+"'" + user  + "'");
+			resultados = instruccion.executeQuery("UPDATE usuarios SET horario = "+hora+" WHERE nombre ='Arturo Grau'"/*+"'" + user  + "'"*/);
 			//Ciclo while que añade cada resultado (que solo es 1) en la variable password
+			
 			while(resultados.next()) {	
-				horario = ((Statement) resultados).executeUpdate(SETHOUR);
-			}
+				horario = resultados.getString(horario);			}
 		} 
 		catch (SQLException exceptionSQL) {
 			System.out.println("Error en Statement");
@@ -100,7 +99,7 @@ public class UsuariosModel {
 		//Al terminar el ciclo while, devolvemos la password
 		close();
 		return horario;
-	}*/
+	}
 	
 	public ResultSet getInfoConsultas() {
 		

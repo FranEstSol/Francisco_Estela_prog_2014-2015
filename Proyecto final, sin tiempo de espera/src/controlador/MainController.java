@@ -21,10 +21,6 @@ public class MainController {
 	UsuariosModel nombre=null;
 	UsuariosModel password=null;
 	UsuariosModel horario=null;
-	//Objetos desde VistaMedicos para el montaje de la hora
-	VistaMedico horas=null;
-	VistaMedico minutos=null;
-	//public static String Horario="";
 	public static String selectedUser="";
 
 	//Comprobacion del estado de la conexion
@@ -124,9 +120,10 @@ public class MainController {
 			}
 		}					
 	}	
-/*	public void setHorario(String user, String hora){
-		int hour = horario.MontarHorario(user, hora);
-	}*/
+	
+	public void setHorario(String hora){		
+		horario.MontarHorario(hora);
+	}
 }
 	
 
