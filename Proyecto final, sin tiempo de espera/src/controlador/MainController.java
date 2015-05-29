@@ -122,7 +122,9 @@ public class MainController {
 	}	
 	
 	public void setHorario(String hora){		
-	vApp.montarHorario(hora);
+		String user;
+		user = VistaLogin.selectedUser;
+		vApp.montarHorario(hora, user);
 	}
 }
 	

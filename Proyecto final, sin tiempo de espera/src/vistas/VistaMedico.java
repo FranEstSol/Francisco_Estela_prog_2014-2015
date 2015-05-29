@@ -24,6 +24,7 @@ public class VistaMedico extends JPanel {
 	JLabel lblMinutos;
 	JComboBox comboBoxHoras;
 	JComboBox comboBoxMinutos;
+	JLabel lblHoraActualizada;
 	
 	int minutos=0;
 	int horas=0;
@@ -35,26 +36,31 @@ public class VistaMedico extends JPanel {
 		
 		//Label Hora de llamada
 		lblHoraDeLlamada = new JLabel("Hora de llamada:");
-		lblHoraDeLlamada.setBounds(30, 11, 115, 14);
+		lblHoraDeLlamada.setBounds(95, 90, 115, 14);
 		add(lblHoraDeLlamada);
+		
+		//Label hora
+		lblHoraActualizada = new JLabel("");
+		lblHoraActualizada.setBounds(23, 233, 257, 14);
+		add(lblHoraActualizada);
 
 		//Label Hora de minutos
 		lblMinutos = new JLabel("Minutos de llamada:");
-		lblMinutos.setBounds(30, 77, 110, 14);
+		lblMinutos.setBounds(95, 156, 130, 14);
 		add(lblMinutos);
 		//Botón atrás
 		btnAtras = new JButton("Atras");
-		btnAtras.setBounds(42, 227, 89, 23);
+		btnAtras.setBounds(23, 273, 115, 23);
 		add(btnAtras);
 
 		//Botón aceptar
 		btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(30, 177, 115, 23);
+		btnAceptar.setBounds(172, 273, 115, 23);
 		add(btnAceptar);
 
 		//Combo Box horas de llamada
 		comboBoxHoras = new JComboBox();
-		comboBoxHoras.setBounds(30, 36, 115, 20);
+		comboBoxHoras.setBounds(95, 115, 115, 20);
 		add(comboBoxHoras);
 		for (int i=00; i<24;i++){
 			comboBoxHoras.addItem(i);
@@ -63,7 +69,7 @@ public class VistaMedico extends JPanel {
 
 		//Combo Box minutos de llamada
 		comboBoxMinutos = new JComboBox();
-		comboBoxMinutos.setBounds(30, 102, 115, 20);
+		comboBoxMinutos.setBounds(95, 181, 115, 20);
 		add(comboBoxMinutos);
 		for (int i=0; i<60;i++){
 			comboBoxMinutos.addItem(i);
@@ -95,6 +101,7 @@ public class VistaMedico extends JPanel {
 				//horario=horas+":"+minutos;
 				MainController.getInstance().setHorario(horario);
 				System.out.println("montaje: "+horario);
+				lblHoraActualizada.setText("Hora actualizada a "+horario);
 				
 			}
 		});

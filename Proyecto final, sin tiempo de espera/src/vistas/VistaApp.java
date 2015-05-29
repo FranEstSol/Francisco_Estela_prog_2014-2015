@@ -72,9 +72,9 @@ public class VistaApp extends JFrame {
 		c.show(contentPane, "VISTA_USUARIO");		
 	}
 	
-		public void montarHorario(String hora) {		
+		public void montarHorario(String hora, String user) {		
 			UsuariosModel modelo = new UsuariosModel();
-			modelo.MontarHorario(hora);
+			modelo.MontarHorario(hora, user);
 			
 		}
 

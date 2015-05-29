@@ -79,21 +79,20 @@ public class UsuariosModel {
 		return password;
 	}
 
-	public void MontarHorario(String hora) {
+	public void MontarHorario(String hora, String user) {
 		//Inicializa el ArrayList de password
 		String horario="";
 		int resultadoModificacdion;
-		String prueba = "Arturo Grau";
 		try {
-			// create our java preparedstatement using a sql update query
+			//Crea la consulta
 		    PreparedStatement ps = conexion.prepareStatement(
 		      "UPDATE usuarios SET horario = ? WHERE nombre = ?");
 		 
-		    // set the preparedstatement parameters
+		    //Introduce los parametros
 		    ps.setString(1,hora);
-		    ps.setString(2,prueba);
+		    ps.setString(2,user);
 		 
-		    // call executeUpdate to execute our sql update statement
+		    //Ejecuta el update
 		    ps.executeUpdate();
 		    ps.close();
 		} 
