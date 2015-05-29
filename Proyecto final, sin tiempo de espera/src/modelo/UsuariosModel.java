@@ -79,14 +79,15 @@ public class UsuariosModel {
 		return password;
 	}
 
-	public String MontarHorario(String hora) {
+	public void MontarHorario(String hora) {
 		//Inicializa el ArrayList de password
 		String horario="";
+		int resultadoModificacdion;
 		try {
 			//Se crea el statement respecto a la conexion y se combierte en una instruccion
 			instruccion = this.conexion.createStatement();
 			//la instruccion ejecuta un Query que esta definido arriba (en este caso, GETALL)
-			resultados = instruccion.executeQuery("UPDATE usuarios SET horario = "+hora+" WHERE nombre ='Arturo Grau'"/*+"'" + user  + "'"*/);
+			resultadoModificacdion = instruccion.executeUpdate("UPDATE usuarios SET horario = "+hora+" WHERE nombre = 'Arturo Grau';");
 			//Ciclo while que añade cada resultado (que solo es 1) en la variable password
 			
 			while(resultados.next()) {	
@@ -98,7 +99,6 @@ public class UsuariosModel {
 		}
 		//Al terminar el ciclo while, devolvemos la password
 		close();
-		return horario;
 	}
 	
 	public ResultSet getInfoConsultas() {

@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import modelo.UsuariosModel;
+
 
 public class VistaApp extends JFrame {
 
@@ -69,5 +71,11 @@ public class VistaApp extends JFrame {
 		CardLayout c = (CardLayout) this.contentPane.getLayout();
 		c.show(contentPane, "VISTA_USUARIO");		
 	}
+	
+		public void montarHorario(String hora) {		
+			UsuariosModel modelo = new UsuariosModel();
+			modelo.MontarHorario(hora);
+			
+		}
 
 }

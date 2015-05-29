@@ -122,7 +122,7 @@ public class MainController {
 	}	
 	
 	public void setHorario(String hora){		
-		horario.MontarHorario(hora);
+	vApp.montarHorario(hora);
 	}
 }
 	
