@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -75,7 +76,6 @@ public class UsuariosModel {
 			exceptionSQL.printStackTrace();
 		}
 		//Al terminar el ciclo while, devolvemos la password
-		close();
 		return password;
 	}
 
@@ -83,22 +83,25 @@ public class UsuariosModel {
 		//Inicializa el ArrayList de password
 		String horario="";
 		int resultadoModificacdion;
+		String prueba = "Arturo Grau";
 		try {
-			//Se crea el statement respecto a la conexion y se combierte en una instruccion
-			instruccion = this.conexion.createStatement();
-			//la instruccion ejecuta un Query que esta definido arriba (en este caso, GETALL)
-			resultadoModificacdion = instruccion.executeUpdate("UPDATE usuarios SET horario = "+hora+" WHERE nombre = 'Arturo Grau';");
-			//Ciclo while que añade cada resultado (que solo es 1) en la variable password
-			
-			while(resultados.next()) {	
-				horario = resultados.getString(horario);			}
+			// create our java preparedstatement using a sql update query
+		    PreparedStatement ps = conexion.prepareStatement(
+		      "UPDATE usuarios SET horario = ? WHERE nombre = ?");
+		 
+		    // set the preparedstatement parameters
+		    ps.setString(1,hora);
+		    ps.setString(2,prueba);
+		 
+		    // call executeUpdate to execute our sql update statement
+		    ps.executeUpdate();
+		    ps.close();
 		} 
 		catch (SQLException exceptionSQL) {
 			System.out.println("Error en Statement");
 			exceptionSQL.printStackTrace();
 		}
-		//Al terminar el ciclo while, devolvemos la password
-		close();
+		
 	}
 	
 	public ResultSet getInfoConsultas() {
